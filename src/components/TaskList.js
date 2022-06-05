@@ -1,24 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Task from "./Task";
 
-function TaskList({ tasks }) {
-  const [taskData, setTaskData] = useState(tasks);
-
-  // function addTask(newTask){
-  //   setTaskData([...taskData,newTask])
-  // } need to pass this function as a prop to NewTaskForms onTaskFormSubmit={addTask}
-
-  function handleRemoveTask(removeTask) {
-    const display = taskData.filter((task) => {
-      if (task.text !== removeTask) return true;
-    });
-    setTaskData(display);
-  }
-
+function TaskList({ tasks, handleRemoveTask }) {
   return (
     <div className="tasks">
-      {taskData.map((task) => (
+      {tasks.map((task) => (
         <Task
           key={task.text}
           text={task.text}
